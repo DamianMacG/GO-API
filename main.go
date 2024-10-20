@@ -5,8 +5,8 @@ import (
 	"GO-API/routes"
 	"log"
 
-	"github.com/joho/godotenv"
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 )
 
 func main() {
@@ -17,12 +17,12 @@ func main() {
 	}
 
 	// Connect to the database
-	config.ConnectDatabase() 
+	config.ConnectDatabase()
 	config.SeedData() // Seed the database with initial data
 
 	// Set up the router
 	router := gin.Default()
 	routes.RegisterRoutes(router) // Register your routes
 
-	router.Run("localhost:8080") // Run the server
+	router.Run("localhost:8081") // Run the server
 }

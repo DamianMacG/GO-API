@@ -15,7 +15,6 @@ func RegisterRoutes(router *gin.Engine) {
 	router.DELETE("/albums/:id", controllers.DeleteAlbum)
 
 	// Reviews routes
-	router.GET("/albums/:album_id/reviews", controllers.GetReviews) // Get reviews for an album
-	router.POST("/albums/:album_id/reviews", controllers.PostReview) // Add a review for an album
+	router.GET("/reviews/albums/:album_id", controllers.GetReviews) // Get reviews for an album
+	router.POST("/reviews/albums/:album_id", controllers.PostReview) // Add a review for an album
 }
-

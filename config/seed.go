@@ -24,7 +24,7 @@ func SeedData() {
 	}
 
 	for _, review := range reviews {
+		// Check if the review already exists before creating
 		DB.FirstOrCreate(&review, models.Review{AlbumID: review.AlbumID, Content: review.Content})
 	}
 }
-
