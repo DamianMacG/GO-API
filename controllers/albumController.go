@@ -1,44 +1,77 @@
+// controllers/album.go
 package controllers
 
 import (
-	"GO-API/models"
 	"net/http"
-
+	"GO-API/config"
+	"GO-API/models"
 	"github.com/gin-gonic/gin"
 )
 
-var albums = []models.Album{
-	{ID: "1", Title: "Blue Train", Artist: "John Coltrane", Price: 56.99},
-	{ID: "2", Title: "Jeru", Artist: "Gerry Mulligan", Price: 17.99},
-	{ID: "3", Title: "Sarah Vaughan and Clifford Brown", Artist: "Sarah Vaughan", Price: 39.99},
-}
-
 // GetAlbums responds with the list of all albums as JSON.
 func GetAlbums(c *gin.Context) {
+	var albums []models.Album
+	config.DB.Find(&albums)
 	c.IndentedJSON(http.StatusOK, albums)
 }
 
-// PostAlbum adds an album from JSON received in the request body.
-func PostAlbum(c *gin.Context) {
+// GetAlbumByID locates the album whose ID value matches the id parameter sent by the client, then returns that album as a response.
+func GetAlbumByID(c *gin.Context) {
+	id := c.Param("id")
+	var album models.Album
+
+	if err := config.DB.First(&album, id).Error; err != nil {
+		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "album not found"})
+		return
+	}
+	c.IndentedJSON(http.StatusOK, album)
+}
+
+// PostAlbums adds an album from JSON received in the request body.
+func PostAlbums(c *gin.Context) {
 	var newAlbum models.Album
 
 	if err := c.BindJSON(&newAlbum); err != nil {
+		c.IndentedJSON(http.StatusBadRequest, gin.H{"message": "Invalid request"})
 		return
 	}
 
-	albums = append(albums, newAlbum)
+	config.DB.Create(&newAlbum)
 	c.IndentedJSON(http.StatusCreated, newAlbum)
 }
 
-// GetAlbumByID locates the album by ID and returns it as JSON.
-func GetAlbumByID(c *gin.Context) {
+// UpdateAlbum updates an album
+func UpdateAlbum(c *gin.Context) {
 	id := c.Param("id")
+	var updatedAlbum models.Album
 
-	for _, a := range albums {
-		if a.ID == id {
-			c.IndentedJSON(http.StatusOK, a)
-			return
-		}
+	if err := c.BindJSON(&updatedAlbum); err != nil {
+		c.IndentedJSON(http.StatusBadRequest, gin.H{"message": "Invalid request"})
+		return
 	}
-	c.IndentedJSON(http.StatusNotFound, gin.H{"message": "album not found"})
+
+	var album models.Album
+	if err := config.DB.First(&album, id).Error; err != nil {
+		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "Album not found"})
+		return
+	}
+
+	// Update fields
+	album.Title = updatedAlbum.Title
+	album.Artist = updatedAlbum.Artist
+	album.Price = updatedAlbum.Price
+
+	config.DB.Save(&album)
+	c.IndentedJSON(http.StatusOK, album)
+}
+
+// DeleteAlbum deletes an album
+func DeleteAlbum(c *gin.Context) {
+	id := c.Param("id")
+	if err := config.DB.Delete(&models.Album{}, id).Error; err != nil {
+		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "Album not found"})
+		return
+	}
+
+	c.IndentedJSON(http.StatusOK, gin.H{"message": "Album deleted"})
 }

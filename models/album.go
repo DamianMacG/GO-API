@@ -1,9 +1,8 @@
 package models
 
-// Album represents data about a record album.
 type Album struct {
-	ID     string  `json:"id"`
-	Title  string  `json:"title"`
-	Artist string  `json:"artist"`
-	Price  float64 `json:"price"`
+	ID     uint    `gorm:"primaryKey"` // GORM will use this as the primary key
+	Title  string  `gorm:"type:varchar(100)"`
+	Artist string  `gorm:"type:varchar(100)"`
+	Price  float64 `gorm:"type:numeric(10,2)"`
 }
