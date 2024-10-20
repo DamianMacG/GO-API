@@ -1,0 +1,82 @@
+[
+    {
+        "album_id": 1,
+        "content": "A masterpiece of jazz. Coltrane's playing is top-notch!",
+        "rating": 5
+    },
+    {
+        "album_id": 1,
+        "content": "A must-have for any jazz lover!",
+        "rating": 4
+    },
+    {
+        "album_id": 2,
+        "content": "A solid album, but not my favorite.",
+        "rating": 3
+    },
+    {
+        "album_id": 3,
+        "content": "Timeless music that never gets old.",
+        "rating": 5
+    },
+    {
+        "album_id": 4,
+        "content": "A spiritual journey through sound.",
+        "rating": 5
+    },
+    {
+        "album_id": 5,
+        "content": "An innovative album that changed jazz.",
+        "rating": 4
+    },
+    {
+        "album_id": 6,
+        "content": "A bold experiment that pays off.",
+        "rating": 5
+    },
+    {
+        "album_id": 7,
+        "content": "Mingus at his best, a true genius.",
+        "rating": 5
+    },
+    {
+        "album_id": 8,
+        "content": "Ornette Coleman pushes the boundaries of jazz.",
+        "rating": 4
+    },
+    {
+        "album_id": 9,
+        "content": "A great blend of jazz and soul.",
+        "rating": 4
+    },
+    {
+        "album_id": 10,
+        "content": "Evans' piano work is simply beautiful.",
+        "rating": 5
+    },
+    {
+        "album_id": 11,
+        "content": "Mingus knows how to tell a story through music.",
+        "rating": 4
+    },
+    {
+        "album_id": 12,
+        "content": "Hancock's compositions are innovative and captivating.",
+        "rating": 4
+    },
+    {
+        "album_id": 13,
+        "content": "A classic that showcases the talents of two jazz legends.",
+        "rating": 5
+    },
+    {
+        "album_id": 14,
+        "content": "This album introduced me to jazz; it's fantastic!",
+        "rating": 5
+    },
+    {
+        "album_id": 15,
+        "content": "A great introduction to both Parker and Gillespie.",
+        "rating": 4
+    }
+]

@@ -1,30 +1,60 @@
-// config/seed.go
 package config
 
 import (
+	"encoding/json"
+	"log"
+	"os"
+
 	"GO-API/models"
 )
 
 // SeedData seeds the database with initial data
 func SeedData() {
-	albums := []models.Album{
-		{Title: "Blue Train", Artist: "John Coltrane", Price: 56.99},
-		{Title: "Jeru", Artist: "Gerry Mulligan", Price: 17.99},
+	// Seed albums from JSON file
+	if err := SeedAlbumsFromFile("albums.json"); err != nil {
+		log.Printf("Error seeding albums: %v", err)
+	}
+
+	// Seed reviews from JSON file
+	if err := SeedReviewsFromFile("reviews.json"); err != nil {
+		log.Printf("Error seeding reviews: %v", err)
+	}
+}
+
+func SeedAlbumsFromFile(filename string) error {
+	file, err := os.Open(filename) // Open the file
+	if err != nil {
+		return err
+	}
+	defer file.Close() // Ensure the file is closed after reading
+
+	var albums []models.Album
+	if err := json.NewDecoder(file).Decode(&albums); err != nil { // Use json.Decoder
+		return err
 	}
 
 	for _, album := range albums {
 		DB.FirstOrCreate(&album, models.Album{Title: album.Title, Artist: album.Artist})
 	}
 
-	// Seed reviews for the albums
-	reviews := []models.Review{
-		{AlbumID: 1, Content: "A masterpiece!", Rating: 5},
-		{AlbumID: 1, Content: "Great for jazz lovers!", Rating: 4},
-		{AlbumID: 2, Content: "Not my favorite.", Rating: 2},
+	return nil
+}
+
+func SeedReviewsFromFile(filename string) error {
+	file, err := os.Open(filename) // Open the file
+	if err != nil {
+		return err
+	}
+	defer file.Close() // Ensure the file is closed after reading
+
+	var reviews []models.Review
+	if err := json.NewDecoder(file).Decode(&reviews); err != nil { // Use json.Decoder
+		return err
 	}
 
 	for _, review := range reviews {
-		// Check if the review already exists before creating
 		DB.FirstOrCreate(&review, models.Review{AlbumID: review.AlbumID, Content: review.Content})
 	}
+
+	return nil
 }

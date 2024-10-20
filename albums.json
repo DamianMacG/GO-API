@@ -1,0 +1,77 @@
+[
+    {
+        "title": "Blue Train",
+        "artist": "John Coltrane",
+        "price": 56.99
+    },
+    {
+        "title": "Jeru",
+        "artist": "Gerry Mulligan",
+        "price": 17.99
+    },
+    {
+        "title": "Kind of Blue",
+        "artist": "Miles Davis",
+        "price": 49.99
+    },
+    {
+        "title": "A Love Supreme",
+        "artist": "John Coltrane",
+        "price": 39.99
+    },
+    {
+        "title": "Time Out",
+        "artist": "Dave Brubeck",
+        "price": 29.99
+    },
+    {
+        "title": "Bitches Brew",
+        "artist": "Miles Davis",
+        "price": 34.99
+    },
+    {
+        "title": "The Black Saint and the Sinner Lady",
+        "artist": "Charles Mingus",
+        "price": 28.99
+    },
+    {
+        "title": "The Shape of Jazz to Come",
+        "artist": "Ornette Coleman",
+        "price": 24.99
+    },
+    {
+        "title": "Speak No Evil",
+        "artist": "Wayne Shorter",
+        "price": 32.99
+    },
+    {
+        "title": "Getz/Gilberto",
+        "artist": "Stan Getz & João Gilberto",
+        "price": 44.99
+    },
+    {
+        "title": "The Essential Bill Evans",
+        "artist": "Bill Evans",
+        "price": 50.99
+    },
+    {
+        "title": "Mingus Ah Um",
+        "artist": "Charles Mingus",
+        "price": 22.99
+    },
+    {
+        "title": "Maiden Voyage",
+        "artist": "Herbie Hancock",
+        "price": 39.99
+    },
+    {
+        "title": "Blues and the Abstract Truth",
+        "artist": "Oliver Nelson",
+        "price": 31.99
+    },
+    {
+        "title": "Bird and Diz",
+        "artist": "Charlie Parker & Dizzy Gillespie",
+        "price": 45.99
+    }
+]
